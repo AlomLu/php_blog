@@ -27,7 +27,7 @@ if(!isset($_GET['id']) || $_GET['id'] == NULL){
 					<h2>Related articles</h2>
 					<?php 
 						$catid = $result['cat_id'];
-						$queryrelated = "SELECT * FROM tbl_post where cat_id=$catid AND id !=$id limit 6";
+						$queryrelated = "SELECT * FROM tbl_post where cat_id=$catid AND id !=$id limit 5";
 						$related_post = $db->select($queryrelated);
 						if($related_post){
 							while($related_result = $related_post->fetch_assoc()){
