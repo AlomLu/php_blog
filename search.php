@@ -1,17 +1,17 @@
 <?php include 'inc/header.php'; ?>
 
 <?php 
-    if(!isset($_GET['category'])){
+    if(!isset($_GET['search'])){
         header("Location: 404.php");
     }else{
-        $category_id = $_GET['category'];
+        $search = $_GET['search'];
     }
 ?>
 
 <div class="contentsection contemplete clear">
 	<div class="maincontent clear">
         <?php
-            $query = "SELECT * FROM tbl_post where cat_id = $category_id";
+            $query = "SELECT * FROM tbl_post where title LIKE '%$search%' OR body LIKE '%$search%' ";
             $post = $db->select($query);
 
             if($post){
@@ -27,7 +27,9 @@
             </div>
         </div>
             <?php } ?> <!-- end while loop -->
-        <?php }else{ header("Location: 404.php"); } ?>
+        <?php }else{ ?>
+                    <p>Your search query not found !!</p>
+                <?php } ?>
     </div>
     <?php include 'inc/sidebar.php'; ?>
 </div>
