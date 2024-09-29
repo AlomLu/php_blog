@@ -64,7 +64,15 @@ h6 {font-size:1em; text-transform:uppercase;}
 h1 a {
 	font-weight:normal;
 }
+.success{
+	color: green;
+	font-size: 18px;
+}
 
+.error{
+	color: red;
+	font-size: 18px;
+}
 
 /* branding
 ----------------------------------------------- */

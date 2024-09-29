@@ -27,7 +27,9 @@
             </div>
         </div>
             <?php } ?> <!-- end while loop -->
-        <?php }else{ header("Location: 404.php"); } ?>
+        <?php }else{ ?>
+            <h3>No Post Available in this category</h3>
+        <?php  } ?>
     </div>
     <?php include 'inc/sidebar.php'; ?>
 </div>
