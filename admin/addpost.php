@@ -4,8 +4,50 @@
 		
             <div class="box round first grid">
                 <h2>Add New Post</h2>
+                <?php
+                    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                        $title = mysqli_real_escape_string($db->link, $_POST['title']);
+                        $cat_id = mysqli_real_escape_string($db->link, $_POST['cat_id']);
+                        // $image = mysqli_real_escape_string($db->link, $_POST['image']);
+                        $body = mysqli_real_escape_string($db->link, $_POST['body']);
+                        $tags = mysqli_real_escape_string($db->link, $_POST['tags']);
+                        $author = mysqli_real_escape_string($db->link, $_POST['author']);
+                        
+                        $permited  = array('jpg', 'jpeg', 'png', 'gif');
+                        $file_name = $_FILES['image']['name'];
+                        $file_size = $_FILES['image']['size'];
+                        $file_temp = $_FILES['image']['tmp_name'];
+
+                        $div = explode('.', $file_name);
+                        $file_ext = strtolower(end($div));
+                        $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
+                        $uploaded_image = "upload/".$unique_image;
+
+                        if($title == "" || $cat_id == "" || $body == "" || $tags == "" || $author == "" || $file_name == ""){
+                            echo "<span class='error'>Feild must not be empty!.</sapn>";
+                        }elseif ($file_size >1048567) {
+                            echo "<span class='error'>Image Size should be less then 1MB!
+                            </span>";
+
+                           } elseif (in_array($file_ext, $permited) === false) {
+                            echo "<span class='error'>You can upload only:-"
+                            .implode(', ', $permited)."</span>";
+
+                           } else{
+                           move_uploaded_file($file_temp, $uploaded_image);
+                           $query = "INSERT INTO tbl_post(cat_id, title, body, image, author, tags) VALUES('$cat_id', '$title', '$body', '$uploaded_image', '$author', '$tags')";
+                           $inserted_rows = $db->insert($query);
+                           if ($inserted_rows) {
+                            echo "<span class='success'>Data Inserted Successfully.</span>";
+                           }else {
+                            echo "<span class='error'>Data Not Inserted !</span>";
+                           }
+                        }
+                    }
+                ?>
+
                 <div class="block">               
-                 <form action="" method="" enctype="multipart/form-data">
+                 <form action="addpost.php" method="post" enctype="multipart/form-data">
                     <table class="form">
                        
                         <tr>
@@ -13,7 +55,7 @@
                                 <label>Title</label>
                             </td>
                             <td>
-                                <input type="text" placeholder="Enter Post Title..." class="medium" />
+                                <input type="text" name="title"  placeholder="Enter Post Title..." class="medium" />
                             </td>
                         </tr>
                      
@@ -22,11 +64,19 @@
                                 <label>Category</label>
                             </td>
                             <td>
-                                <select id="select" name="select">
+                                <select id="select" name="cat_id">
                                     <option>select category </option>
-                                    <option value="1">Category One</option>
-                                    <option value="2">Category Two</option>
-                                    <option value="3">Cateogry Three</option>
+                                    <?php 
+                                        $query = "SELECT * FROM tbl_category";
+                                        $category = $db->select($query);
+                                        if($category){
+                                            while($result = $category->fetch_assoc()){
+                                    ?>
+                                        <option value="<?php echo $result['id'] ?>"><?php echo $result['name']; ?></option>
+                                    <?php } ?>
+                                    <?php }else{ ?>
+                                        echo "<span>No Category availble</span>";
+                                        <?php } ?>
                                 </select>
                             </td>
                         </tr>
@@ -45,7 +95,7 @@
                                 <label>Upload Image</label>
                             </td>
                             <td>
-                                <input type="file" />
+                                <input name="image" type="file" />
                             </td>
                         </tr>
                         <tr>
@@ -53,7 +103,23 @@
                                 <label>Content</label>
                             </td>
                             <td>
-                                <textarea class="tinymce"></textarea>
+                                <textarea name="body" class="tinymce"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Tags</label>
+                            </td>
+                            <td>
+                                <input type="text" name="tags"  placeholder="Enter Tags..." class="medium" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Author</label>
+                            </td>
+                            <td>
+                                <input type="text" name="author"  placeholder="Enter Author..." class="medium" />
                             </td>
                         </tr>
 						<tr>
