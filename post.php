@@ -34,7 +34,7 @@ if(!isset($_GET['id']) || $_GET['id'] == NULL){
 						
 					?>
 							<a href="post.php?id=<?php echo $related_result['id']; ?>">
-								<img src="admin/upload/<?php echo $related_result['image']; ?>" alt="post image"/>
+								<img src="admin/<?php echo $related_result['image']; ?>" alt="post image"/>
 							</a>
 						<?php } ?>
 					<?php }else{ echo "No Related Post Available !!"; } ?>

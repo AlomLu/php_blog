@@ -31,7 +31,7 @@
 				?>
 				<div class="popular clear">
 					<h3><a href="post.php?id=<?php echo $result['id'] ?>"><?php echo $result['title'] ?></a></h3>
-					<a href="post.php?id=<?php echo $result['id'] ?>"><img src="admin/upload/<?php echo $result['image'] ?>" alt="Image Missing......"/></a>
+					<a href="post.php?id=<?php echo $result['id'] ?>"><img src="admin/<?php echo $result['image'] ?>" alt="Image Missing......"/></a>
 					<p><?php echo $fm->sidebartextShorten($result['body']) ?></p>	
 				</div>
 					<?php } ?> <!-- while loop end -->

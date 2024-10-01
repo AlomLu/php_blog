@@ -47,7 +47,7 @@
                 ?>
 
                 <div class="block">               
-                 <form action="addpost.php" method="post" enctype="multipart/form-data">
+                 <form action="addpost.php" method="POST" enctype="multipart/form-data">
                     <table class="form">
                        
                         <tr>
