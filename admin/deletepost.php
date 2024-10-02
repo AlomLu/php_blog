@@ -23,6 +23,7 @@
         if($getData){
             while($delimg = $getData->fetch_assoc()){
                 $dellink = $delimg['image'];
+                unlink($dellink);
             }
         }
 

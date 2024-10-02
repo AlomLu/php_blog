@@ -9,12 +9,22 @@
 	  </div>
 	  <p>&copy; Copyright Training with live project.</p>
 	</div>
+	<?php 
+			$query = "SELECT * FROM tbl_social WHERE id = '1' ";
+			$socail_media = $db->select($query);
+
+			if($socail_media){
+				while($result = $socail_media->fetch_assoc()){
+
+	?>
 	<div class="fixedicon clear">
-		<a href="http://www.facebook.com"><img src="images/fb.png" alt="Facebook"/></a>
-		<a href="http://www.twitter.com"><img src="images/tw.png" alt="Twitter"/></a>
-		<a href="http://www.linkedin.com"><img src="images/in.png" alt="LinkedIn"/></a>
-		<a href="http://www.google.com"><img src="images/gl.png" alt="GooglePlus"/></a>
+		<a href="<?php echo $result['facebook']; ?>" target="_blank"><img src="images/fb.png" alt="Facebook"/></a>
+		<a href="<?php echo $result['twitter']; ?>" target="_blank"><img src="images/tw.png" alt="Twitter"/></a>
+		<a href="<?php echo $result['linkedin']; ?>" target="_blank"><img src="images/in.png" alt="LinkedIn"/></a>
+		<a href="<?php echo $result['googleplus']; ?>" target="_blank"><img src="images/gl.png" alt="GooglePlus"/></a>
 	</div>
+		<?php } ?>
+	<?php } ?>
 <script type="text/javascript" src="js/scrolltop.js"></script>
 </body>
 </html>
