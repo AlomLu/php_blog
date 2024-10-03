@@ -27,6 +27,20 @@ class Format{
         $data = htmlspecialchars($data);
         return $data;
     }
+
+    public function title(){
+        $path = $_SERVER['SCRIPT_FILENAME'];
+        $title = basename($path, '.php');
+
+        if($title == "index"){
+            $title = 'home';
+        }elseif($title == "contact"){
+            $title = 'contact';
+        }
+
+        // echo $title = ucwords($title);
+        return $title = ucwords($title);
+    }
 }
 
 ?>
