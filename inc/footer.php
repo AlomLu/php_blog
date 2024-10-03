@@ -7,7 +7,17 @@
 			<li><a href="#">Privacy</a></li>
 		</ul>
 	  </div>
-	  <p>&copy; Copyright Training with live project.</p>
+	  <?php 
+		$query = "SELECT * FROM tbl_footer WHERE id='1' ";
+		$footer = $db->select($query);
+
+		if($footer){
+			while($result = $footer->fetch_assoc()){
+
+	  ?>
+	  <p>&copy; <?php echo $result['note']; echo date(' Y') ?></p>
+	  	<?php } ?>
+	  <?php } ?>
 	</div>
 	<?php 
 			$query = "SELECT * FROM tbl_social WHERE id = '1' ";
