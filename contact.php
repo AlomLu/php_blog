@@ -37,7 +37,7 @@
 			// if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			// 	$error_ = "Invalid Email Address !";
 			// }
-			if(empty($message)){
+			if(empty($body)){
 				$error_message = "Message must not be empty";
 			}
 
@@ -74,10 +74,10 @@
 				<?php 
 				/*	if(isset($error)){
 						echo "<span style='color: red'>$error</span>";
-					}
+					} */
 					if(isset($msg)){
 						echo "<span style='color: green'>$msg</span>";
-					} */
+					} 
 				?>
 				<?php 
 				
