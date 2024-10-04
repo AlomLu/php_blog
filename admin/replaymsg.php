@@ -99,4 +99,5 @@
     });
 </script>
 <?php include 'inc/footer.php' ?>
-
+<!-- header("Location: ".$_SERVER['PHP_SELF']);
+					 exit(); -->

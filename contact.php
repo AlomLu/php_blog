@@ -10,7 +10,7 @@
 	}
 </style>
 	<?php 
-		if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 			$firstname = $fm->validation($_POST['firstname']);
 			$lastname = $fm->validation($_POST['lastname']);
 			$email = $fm->validation($_POST['email']);
@@ -59,11 +59,17 @@
 
 				if($inserted_rows){
 					 $msg = "Message Sent Successfully";
+					 header("Location: ".$_SERVER['PHP_SELF']."?msg=success");
+					 exit();
 				}else{
 					 $msg = "Message Not Sent!";
 				}
 			}
 		}	
+		// Handle success message after redirect
+		if(isset($_GET['msg']) && $_GET['msg'] == 'success'){
+			$msg = "Message Sent Successfully";
+		}
 	?>
 
 
@@ -82,7 +88,7 @@
 				<?php 
 				
 				?>
-			<form action="contact.php" method="post">
+			<form action="" method="post">
 				<table>
 				<tr>
 					<td>Your First Name:</td>
