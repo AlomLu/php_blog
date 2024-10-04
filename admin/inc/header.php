@@ -89,8 +89,30 @@
                 <li class="ic-dashboard"><a href="index.php"><span>Dashboard</span></a> </li>
                 <li class="ic-form-style"><a href=""><span>User Profile</span></a></li>
 				<li class="ic-typography"><a href="changepassword.php"><span>Change Password</span></a></li>
-				<li class="ic-grid-tables"><a href="inbox.php"><span>Inbox</span></a></li>
-                <li class="ic-charts"><a href="postlist.php"><span>Visit Website</span></a></li>
+                <li class="ic-grid-tables"><a href="inbox.php"><span>Inbox
+                    <!-- <?php 
+                        $query = "SELECT * FROM tbl_contact WHERE status = '0' ";
+                        $msg = $db->select($query);
+
+                        if($msg){
+                            $count = mysqli_num_rows($msg);
+                            echo "(".$count.")";
+                        }
+                    ?> -->
+
+                    <?php 
+                        $query = "SELECT COUNT(*) AS total_count FROM tbl_contact WHERE status='0' ";
+                        $msg_count = $db->select($query);
+
+                        if($msg_count){
+                           $result = $msg_count->fetch_assoc();
+                           $count = $result['total_count'];
+                           echo "(".$count.")";
+                        }
+                    ?>
+                    </span></a></li>
+                <li class="ic-charts"><a href="adduser.php"><span>Add User</span></a></li>
+                <li class="ic-charts"><a href="userlist.php"><span>User List</span></a></li>
             </ul>
         </div>
         <div class="clear">

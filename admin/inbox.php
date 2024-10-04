@@ -83,7 +83,7 @@
 								<td><?php echo $fm->formatDate($result['date']); ?></td>
 								<td>
 									<a href="viewmsg.php?msgid=<?php echo $result['id'] ?>">View</a> ||
-									<a href="replaymsg.php?msgid=<?php echo $result['id'] ?>">Replay</a> ||
+									<a href="replymsg.php?msgid=<?php echo $result['id'] ?>">Reply</a> ||
 									<a onclick="confirm('Are you sure you want to move the message to the Seen box?')" href="?seenid=<?php echo $result['id'] ?>">Seen</a>
 								</td>
 								<?php } } ?>
