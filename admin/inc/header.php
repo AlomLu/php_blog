@@ -73,7 +73,13 @@
                 ?>
                     <div class="floatleft marginleft10">
                         <ul class="inline-ul floatleft">
-                            <li>Hello Admin</li>
+                            
+                            <li>
+                            Hello 
+                                <?php 
+                                    echo Session::get('userName');
+                                ?>
+                            </li>
                             <li><a href="?action=logout">Logout</a></li>
                         </ul>
                     </div>
@@ -87,7 +93,7 @@
         <div class="grid_12">
             <ul class="nav main">
                 <li class="ic-dashboard"><a href="index.php"><span>Dashboard</span></a> </li>
-                <li class="ic-form-style"><a href=""><span>User Profile</span></a></li>
+                <li class="ic-form-style"><a href="profile.php"><span>User Profile</span></a></li>
 				<li class="ic-typography"><a href="changepassword.php"><span>Change Password</span></a></li>
                 <li class="ic-grid-tables"><a href="inbox.php"><span>Inbox
                     <!-- <?php 

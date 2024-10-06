@@ -12,9 +12,9 @@
 						$delcat = $db->delete($query);
 
 						if($delcat){
-							echo '<span>Category Deleted Successfully';
+							echo '<span class="success">Category Deleted Successfully';
 						}else{
-							echo '<span>Category Not Deleted Successfully';
+							echo '<span class="error">Category Not Deleted';
 						}
 					}
 

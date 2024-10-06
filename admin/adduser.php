@@ -55,7 +55,7 @@
                             <td>
                                 <select name="role" id="select">
                                     <option value="">Select User Role</option>
-                                    <option value="0">Admin</option>
+                                    <option value="3">Admin</option>
                                     <option value="1">Author</option>
                                     <option value="2">Editor</option>
                                 </select>

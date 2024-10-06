@@ -36,16 +36,19 @@
 
 					if($result != false){
 						$value = mysqli_fetch_array($result);
-						$row = mysqli_num_rows($result);
-						if($row > 0){
+						// $row = mysqli_num_rows($result);
+						// if($row > 0){
 							Session::set("login", true);
-							Session::set("username", $value['username']);
-							Session::set("userID", $value['id']);
+							Session::set("userId", $value['id']);
+							Session::set("userName", $value['username']);
+							Session::set("userRole", $value['role']);
+							// Debugging role output
+							// echo "<p>Role from DB: " . $value['role'] . "</p>";
 
 							header("Location: index.php"); // admin er index
-						}else{
-							echo "<span style='color: red; font-size: 18px;'>No Result found</span>";
-						}
+						// }else{
+						// 	echo "<span style='color: red; font-size: 18px;'>No Result found</span>";
+						// }
 					}else{
 						echo "<span style='color: red; font-size: 18px;'>Username or Password not matched!!..</span>";
 					}
