@@ -63,8 +63,11 @@
                                 ?>
                             </td>
 							<td>
-                                <a href="viewuser.php?userid=<?php echo $result['id'] ?>">View</a> || 
-                                <a onclick="return confirm('Are you sure to Delete!.')" href="?deluser=<?php echo $result['id'] ?>">Delete</a></td>
+                                <a href="viewuser.php?userid=<?php echo $result['id'] ?>">View</a> 
+                                <?php
+                                    if($_SESSION['userRole'] == '3'){ ?>
+                                        || <a onclick="return confirm('Are you sure to Delete!.')" href="?deluser=<?php echo $result['id'] ?>">Delete</a></td>
+                                <?php } ?>
 						</tr>
                         <?php } } ?>
 					</tbody>

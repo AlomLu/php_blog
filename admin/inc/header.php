@@ -116,8 +116,13 @@
                            echo "(".$count.")";
                         }
                     ?>
-                    </span></a></li>
-                <li class="ic-charts"><a href="adduser.php"><span>Add User</span></a></li>
+                    </span></a>
+                </li>
+                <?php 
+                    if($_SESSION['userRole'] == '3'){
+                ?>
+                    <li class="ic-charts"><a href="adduser.php"><span>Add User</span></a></li>
+                <?php } ?>
                 <li class="ic-charts"><a href="userlist.php"><span>User List</span></a></li>
             </ul>
         </div>

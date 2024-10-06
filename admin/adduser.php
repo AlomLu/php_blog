@@ -1,5 +1,15 @@
 <?php include 'inc/header.php' ?>
 <?php include 'inc/sidebar.php' ?>
+
+<?php 
+    if($_SESSION['userRole'] == '3'){
+        echo "<script>window.location = 'adduser.php'</script>";
+    }else{
+        echo "<script>window.location = 'index.php'</script>";
+    }
+    
+
+?>
         <div class="grid_10">
 		
             <div class="box round first grid">

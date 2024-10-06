@@ -119,7 +119,7 @@
                                 <label>Author</label>
                             </td>
                             <td>
-                                <input type="text" name="author"  placeholder="Enter Author..." class="medium" />
+                                <input type="text" name="author" value="<?php echo $_SESSION['userName'] ?>" class="medium" />
                             </td>
                         </tr>
 						<tr>
