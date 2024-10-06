@@ -26,6 +26,7 @@
                 $body = mysqli_real_escape_string($db->link, $_POST['body']);
                 $tags = mysqli_real_escape_string($db->link, $_POST['tags']);
                 $author = mysqli_real_escape_string($db->link, $_POST['author']);
+                $user_id = mysqli_real_escape_string($db->link, $_POST['user_id']);
 
                 $permited = array('jpg', 'jpeg', 'png', 'gif');
                 $file_name = $_FILES['image']['name'];
@@ -56,7 +57,8 @@
                                           body = '$body',
                                           image = '$uploaded_image',
                                           author = '$author',
-                                          tags = '$tags'
+                                          tags = '$tags',
+                                          user_id = '$user_id'
                                       WHERE id = '$post_id'";
                             $updated_row = $db->update($query);
                             if ($updated_row) {
@@ -72,7 +74,8 @@
                                       title = '$title',
                                       body = '$body',
                                       author = '$author',
-                                      tags = '$tags'
+                                      tags = '$tags',
+                                      user_id = '$user_id'
                                   WHERE id = '$post_id'";
                         $updated_row = $db->update($query);
                         if ($updated_row) {
@@ -143,7 +146,10 @@
                     </tr>
                     <tr>
                         <td><label>Author</label></td>
-                        <td><input type="text" name="author" value="<?php echo $post_result['author']; ?>" class="medium" /></td>
+                        <td>
+                            <input type="text" name="author" value="<?php echo $post_result['author']; ?>" class="medium" />
+                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['userId'] ?>" class="medium" />
+                        </td>
                     </tr>
                     <tr>
                         <td></td>

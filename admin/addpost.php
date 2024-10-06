@@ -12,6 +12,7 @@
                         $body = mysqli_real_escape_string($db->link, $_POST['body']);
                         $tags = mysqli_real_escape_string($db->link, $_POST['tags']);
                         $author = mysqli_real_escape_string($db->link, $_POST['author']);
+                        $user_id = mysqli_real_escape_string($db->link, $_POST['user_id']);
                         
                         $permited  = array('jpg', 'jpeg', 'png', 'gif');
                         $file_name = $_FILES['image']['name'];
@@ -35,7 +36,7 @@
 
                            } else{
                            move_uploaded_file($file_temp, $uploaded_image);
-                           $query = "INSERT INTO tbl_post(cat_id, title, body, image, author, tags) VALUES('$cat_id', '$title', '$body', '$uploaded_image', '$author', '$tags')";
+                           $query = "INSERT INTO tbl_post(cat_id, title, body, image, author, tags, user_id) VALUES('$cat_id', '$title', '$body', '$uploaded_image', '$author', '$tags', '$user_id')";
                            $inserted_rows = $db->insert($query);
                            if ($inserted_rows) {
                             echo "<span class='success'>Data Inserted Successfully.</span>";
@@ -120,6 +121,7 @@
                             </td>
                             <td>
                                 <input type="text" name="author" value="<?php echo $_SESSION['userName'] ?>" class="medium" />
+                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['userId'] ?>" class="medium" />
                             </td>
                         </tr>
 						<tr>

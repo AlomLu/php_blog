@@ -45,7 +45,14 @@
 							<td><?php echo $result['author'] ?></td>
 							<td><?php echo $result['tags'] ?></td>
 							<td><?php echo $fm->formatDate($result['date']) ?></td>
-							<td><a href="editpost.php?post_id=<?php echo $result['id'] ?>">Edit</a> || <a onclick="return confirm('Are you sure to Delete!');" href="deletepost.php?delpostid=<?php echo $result['id'] ?>">Delete</a></td>
+							<td>
+								<a href="viewpost.php?post_id=<?php echo $result['id'] ?>">view</a> 
+								<?php 
+									if($_SESSION['userRole'] == '3' || $_SESSION['userId'] == $result['user_id']){ ?>
+
+										|| <a href="editpost.php?post_id=<?php echo $result['id'] ?>">Edit</a> 
+										|| <a onclick="return confirm('Are you sure to Delete!');" href="deletepost.php?delpostid=<?php echo $result['id'] ?>">Delete</a></td>
+									<?php } ?>
 						</tr>
 							<?php } ?>
 						<?php } ?>

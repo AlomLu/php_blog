@@ -93,8 +93,11 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <input type="submit" name="submit" Value="Update" />
-                                    <span class="actiondel"><a onclick="confirm('Are you sure to delete!')" href="deletepage.php?delpageid=<?php echo $result['id']; ?>">Delete</a></span>
+                                    <input type="submit" name="submit" Value="Update"/>
+                                    <?php
+                                        if($_SESSION['userRole'] == '3'){ ?>
+                                            <span class="actiondel"><a onclick="confirm('Are you sure to delete!')" href="deletepage.php?delpageid=<?php echo $result['id']; ?>">Delete</a></span>
+                                      <?php } ?>
                                 </td>
                             </tr>
                         </table>

@@ -12,9 +12,9 @@
 						$delcat = $db->delete($query);
 
 						if($delcat){
-							echo '<span class="success">Category Deleted Successfully';
+							echo '<span class="success">Category Deleted Successfully</span>';
 						}else{
-							echo '<span class="error">Category Not Deleted';
+							echo '<span class="error">Category Not Deleted</span>';
 						}
 					}
 
@@ -43,7 +43,13 @@
 						<tr class="odd gradeX">
 							<td><?php echo $i; ?></td>
 							<td><?php echo $result['name'] ?></td>
-							<td><a href="editcat.php?catid=<?php echo $result['id'] ?>">Edit</a> || <a onclick="return confirm('Are you sure to Delete!.')" href="?delcat=<?php echo $result['id'] ?>">Delete</a></td>
+							<td>
+								<a href="editcat.php?catid=<?php echo $result['id'] ?>">Edit</a> 
+								<?php
+									if($_SESSION['userRole'] == '3'){ ?>
+									|| <a onclick="return confirm('Are you sure to Delete!.')" href="?delcat=<?php echo $result['id'] ?>">Delete</a>	
+								<?php } ?>
+							</td>
 						</tr>
 						<?php } ?>	
 					<?php } ?>	
@@ -63,5 +69,3 @@
 	});
 </script>
 <?php include 'inc/footer.php' ?>
-
-
