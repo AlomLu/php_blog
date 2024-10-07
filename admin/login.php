@@ -36,6 +36,7 @@
 
 					if($result != false){
 						$value = mysqli_fetch_array($result);
+						// $value = $result->fetch_assoc();
 						// $row = mysqli_num_rows($result);
 						// if($row > 0){
 							Session::set("login", true);
