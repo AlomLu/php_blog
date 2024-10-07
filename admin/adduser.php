@@ -32,7 +32,7 @@
                         echo '<span class="error">Field must not be empty !</span>';
                     }else{
                         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-                            $email_query = "SELECT * FROM tbl_user WHERE email = '$email' ";
+                            $email_query = "SELECT * FROM tbl_user WHERE email = '$email' limit 1";
                             $mail_check = $db->select($email_query);
                             if($mail_check != false){
                                 echo "<span class='error'>EMail Already Exist !</span>";
