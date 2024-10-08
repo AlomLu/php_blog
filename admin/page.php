@@ -22,7 +22,7 @@
             // }else{
             //     $id = $_GET['pageid'];
             // }
-
+            
             if(isset($_GET['pageid'])){
                 $id = $_GET['pageid'];
             }else{

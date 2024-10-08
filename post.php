@@ -1,6 +1,12 @@
 <?php include 'inc/header.php'; ?>
 
 <?php
+// $postid = mysqli_real_escape_string($db->link, $_GET['id']);
+// if(!isset($postid) || $postid == NULL){
+// 	header("Location: 404.php");
+// }else{
+// 	$id = $postid;
+// }
 if(!isset($_GET['id']) || $_GET['id'] == NULL){
 	header("Location: 404.php");
 }else{
