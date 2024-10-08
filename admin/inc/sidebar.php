@@ -11,7 +11,7 @@
                             </ul>
                         </li>
 						
-                         <li><a class="menuitem">Pages</a>
+                         <li><a class="menuitem">Page Option</a>
                             <ul class="submenu">
                                 <li><a href="addpage.php">Add New Page</a> </li>
                                     <?php
@@ -32,6 +32,12 @@
                             <ul class="submenu">
                                 <li><a href="addcat.php">Add Category</a> </li>
                                 <li><a href="catlist.php">Category List</a> </li>
+                            </ul>
+                        </li>
+                        <li><a class="menuitem">Slider Option</a>
+                            <ul class="submenu">
+                                <li><a href="addslider.php">Add Slider</a> </li>
+                                <li><a href="sliderlist.php">Slider List</a> </li>
                             </ul>
                         </li>
                         <li><a class="menuitem">Post Option</a>
